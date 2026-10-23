@@ -1,0 +1,44 @@
+{
+  "SchemaVersion": 1,
+  "Environment": "Production",
+  "InputSha256": "5b57fd425d2ae547d218acdabf9efae53bfbe3cc53f32f600ecc5c4e3a1d6199",
+  "Scope": "One local configuration layer only. No environment merge, startup, secret validation, network probing or automatic changes.",
+  "InspectedLeaves": 6,
+  "Findings": [
+    {
+      "Rule": "BROAD_HOST_FILTER",
+      "Priority": "medium",
+      "JsonPath": "$.AllowedHosts",
+      "Observation": "Host filter is broad or empty in this layer.",
+      "Recommendation": "Check effective hosting/proxy configuration and intended hostnames; this alone does not establish Host-header exploitation."
+    },
+    {
+      "Rule": "DETAILED_ERRORS",
+      "Priority": "medium",
+      "JsonPath": "$.DetailedErrors",
+      "Observation": "Detailed errors are enabled in the supplied file.",
+      "Recommendation": "Review environment and framework behavior; production diagnostics should avoid disclosing sensitive detail."
+    },
+    {
+      "Rule": "VERBOSE_LOGGING",
+      "Priority": "medium",
+      "JsonPath": "$.Logging.LogLevel.Default",
+      "Observation": "Verbose logging selected in the supplied configuration layer.",
+      "Recommendation": "Review sinks, access, retention and whether application logging includes sensitive data."
+    },
+    {
+      "Rule": "HTTP_LISTENER_REVIEW",
+      "Priority": "review",
+      "JsonPath": "$.Kestrel.Endpoints.Internal.Url",
+      "Observation": "A plaintext listener is configured. A reverse proxy may terminate TLS legitimately.",
+      "Recommendation": "Verify actual binding, network reachability and trusted-proxy TLS; no reachability check was performed."
+    },
+    {
+      "Rule": "INLINE_SENSITIVE_SETTING",
+      "Priority": "medium",
+      "JsonPath": "$.ConnectionStrings.Example",
+      "Observation": "Possible inline sensitive setting. Its value is intentionally excluded from reports; validity was not tested.",
+      "Recommendation": "Review whether this is a real secret or non-sensitive placeholder. Use an appropriate secret provider for actual credentials."
+    }
+  ]
+}

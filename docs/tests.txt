@@ -1,0 +1,19 @@
+PASS safe settings produce no observations
+PASS inline value never leaks into report
+PASS environment reference excluded
+PASS env provider reference excluded
+PASS percent placeholder excluded
+PASS nested connection string marked
+PASS empty sensitive setting not treated as a credential
+PASS production diagnostic priority
+PASS development context retained
+PASS HTTP listener remains a review item
+PASS verbose logging rule
+PASS arrays traversed without exposing values
+PASS duplicate keys rejected
+PASS case ambiguous keys rejected
+PASS comments and trailing commas supported
+PASS root array rejected
+PASS invalid environment rejected
+PASS hash is deterministic
+18/18 passed
