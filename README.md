@@ -1,5 +1,7 @@
 # .NET Configuration Auditor
 
+**Portfolio area:** [Cloud/Infrastructure](https://github.com/alefkaue#cloudinfraestrutura) · **Context:** Personal project
+
 **C# · offline defensive analysis · original personal portfolio project**
 
 Inspect a local appsettings-style JSON layer, preserving environment context and excluding setting values from reports.
